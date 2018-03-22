@@ -1,4 +1,4 @@
-(ns sicp-clojure.core.chapter1)
+(ns sicp-clojure.chapter1)
 
 ; 1.1.1
 
@@ -129,3 +129,49 @@
   (root-of-iter 0 1 x n))
 
 (root-of 16 4)
+
+
+; exercise 1.9
+(defn plus1 [a b]
+  (if (= a 0)
+      b
+      (inc (plus1 (dec a) b))))
+
+(plus1 4 5)
+(inc (plus1 3 5))
+(inc (inc (plus1 2 5)))
+(inc (inc (inc (plus1 1 5))))
+(inc (inc (inc (inc (plus 0 5)))))
+(inc (inc (inc (inc 5))))
+(inc (inc (inc 6)))
+(inc (inc 7))
+(inc 9)
+(9)
+
+(defn plus2 [a b]
+  (if (= a 0)
+      b
+      (plus2 (dec a) (inc b))))
+
+(plus2 4 5)
+(plus2 (dec 4) (inc 5))
+(plus2 3 6)
+(plus2 (dec 3) (inc 6))
+(plus2 2 7)
+(plus2 (dec 2) (inc 7))
+(plus2 1 8)
+(plus2 (dec 1) (inc 8))
+(plus2 0 9)
+(9)
+
+(defn A [x y]
+  (cond
+    (= y 0) 0
+    (= x 0) (* 2 y)
+    (= y 1) 2
+    :else (A (- x 1) (A x (- y 1)))
+  ))
+
+(A 1 10)
+(A 2 4)
+(A 3 3)
